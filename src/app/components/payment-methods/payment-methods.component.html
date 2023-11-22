@@ -1,0 +1,15 @@
+<div>
+    <div class="row">
+        <div>
+            <form>
+            <div >
+                <label for="paymentMethod" class="form-label">Selecione a forma de pagamento:</label>
+                <select class="form-control" id="paymentMethod">
+                <option value="">Escolha uma opção</option>
+                <option *ngFor="let paymentmethod of paymentMethod" [value]="paymentmethod.id">{{ paymentmethod.nome }}</option>
+                </select>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

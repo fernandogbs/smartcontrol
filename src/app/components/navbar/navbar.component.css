@@ -38,3 +38,13 @@
       width: 100%; /* largura igual à largura do link */
     }    
 }
+
+
+.navbar__title{
+    background: rgb(0,148,255);
+    background: linear-gradient(90deg, rgba(0,148,255,1) 0%, rgba(0,148,240,1) 75%, rgba(164,217,255,1) 100%, rgba(207,235,255,1) 100%, rgba(255,255,255,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700; 
+    font-size: 35px;
+}

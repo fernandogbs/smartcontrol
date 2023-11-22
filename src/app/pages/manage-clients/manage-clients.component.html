@@ -1,0 +1,148 @@
+<div class="container-sm">
+    <div>
+        <div class="workbench" *ngIf="!hideElement">
+            <div>
+                <input id="inputArea" class="form-control shadow bg-body-tertiary rounded" [(ngModel)]="searchTerm" (input)="search()"
+                width="200" height="30" placeholder="Pesquisar por clientes...">
+            </div>
+            <br>
+            <app-add-button id="addButton" (click)="showClientRegistration = true" (click)="hideElement = !hideElement" text="Adicionar Cliente"></app-add-button>
+        </div>
+        <br>
+        <div class="container-fluid" *ngIf="showClientRegistration">
+            <div class="navbar">
+
+                <div class="container-fluid">
+                    <h2>Cadastro de Cliente</h2>
+                    <button type="reset" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="cleanForm(f)" (click)="hideElement = !hideElement" (click)="showClientRegistration = false"></button>
+                </div>
+            </div>
+            <div class="container-fluid card add-client">
+                <div class="card-body">
+                    <form id="add-form" (ngSubmit)="f.form.valid && saveClient(f)" #f="ngForm" novalidate>
+                        <div class="form-group mb-4">
+                            <label for="name">Nome</label>
+                            <input type="text" [(ngModel)]="client.name" id="name" name="name" #name="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && name.invalid}" placeholder="Digite o nome"> 
+                            <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                                <div *ngIf="name.errors">Nome é obrigatório</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="email">E-mail</label>
+                            <input type="text" [(ngModel)] = "client.mailAddress" id="email" name="email" #email="ngModel"  class="form-control" [ngClass]="{'is-invalid': f.submitted && email.invalid}" placeholder="Digite um e-mail">
+                            <!-- <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                                <div *ngIf="email.errors"></div>
+                            </div>/ -->
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="corporateReason">Razão Social</label>
+                            <input type="text" [(ngModel)]="client.corporateReason" id="corporateReason" name="corporateReason" #corporateReason="ngModel" class="form-control" [ngClass]="{'is-invalid': f.submitted && corporateReason.invalid}" placeholder="Razão social">
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="cpf">CPF</label>
+                            <input type="number" [(ngModel)]="client.cpf" id="cpf" name="cpf" #cpf="ngModel" required class="form-control" [ngClass]="{'is-invalid': f.submitted && cpf.invalid}" placeholder="CPF">
+                            <div *ngIf="f.submitted && cpf.invalid" class="invalid-feedback">
+                                <div *ngIf="cpf.errors">CPF é obrigatório</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="cnpj">CNPJ</label>
+                            <input type="number" [(ngModel)]="client.cnpj" id="cnpj" name="cnpj" #cnpj="ngModel" required class="form-control" [ngClass]="{'is-invalid': f.submitted && cnpj.invalid}" placeholder="CNPJ ">
+                            <div *ngIf="f.submitted && cnpj.invalid" class="invalid-feedback">
+                                <div *ngIf="cnpj.errors">CNPJ é obrigatório</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phoneNumber">Telefone</label>
+                            <input type="number" [(ngModel)]="client.phoneNumber" id="phoneNumber" name="phoneNumber" #phoneNumber="ngModel" required class="form-control" [ngClass]="{'is-invalid': f.submitted && cnpj.invalid}" placeholder="Número de contato">
+                            <div *ngIf="f.submitted && phoneNumber.invalid" class="invalid-feedback">
+                                <div *ngIf="phoneNumber.errors">Número de telefone é obrigatório</div>
+                            </div>
+                        </div>
+                        
+                        <br>
+                        <app-save-button></app-save-button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive overflow-auto" style="max-height: 500px;"  *ngIf="!hideTable">
+            <table class="table caption-top table-secondary" *ngIf="!hideElement">
+                <caption>Lista de Clientes</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Razão Social</th>
+                        <th scope="col">CPF/CNPJ</th>
+                        <th scope="col">Telefone</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody class="overflow-auto">
+                    <tr *ngFor="let client of clients">
+                        <td>{{client.name}}</td>
+                        <td>{{client.mailAddress}}</td>
+                        <td>{{client.corporateReason}}</td>
+                        <td>{{client.cpf || client.cnpj}}</td>
+                        <td>{{client.phoneNumber}}</td>
+                        <td>
+                            <div class="btn-group" dropdown>
+                                <button class="dropdown-basic" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="menu__itens">
+                                    . . .
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-bottom shadow" id="dropdown__menu">
+                                  <img src="../../../assets/edit.svg" alt="edit"> <button (click)="editClient(client) " id="menu__button__one" (click)="showClientRegistration = true" (click)="hideElement = !hideElement">Editar</button>
+                                  <img src="../../../assets/delete.svg" alt="delete"> <button (click)="deleteClient(client)" id="menu__button__two"> Excluir</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>            
+        </div>
+        <div class="table-responsive overflow-auto" style="max-height: 500px;"  *ngIf="hideTable">
+            <table class="table caption-top table-secondary" *ngIf="!showSearchTable">
+                <caption>Lista de Clientes</caption>
+                <thead >
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Razão Social</th>
+                        <th scope="col">CPF/CNPJ</th>
+                        <th scope="col">Telefone</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody class="overflow-auto">
+                    <tr *ngFor="let result of searchResults">
+                        <td>{{result.name}}</td>
+                        <td>{{result.mailAddress}}</td>
+                        <td>{{result.corporateReason}}</td>
+                        <td>{{result.cpf || client.cnpj}}</td>
+                        <td>{{result.phoneNumber}}</td>
+                        <td>
+                            <div class="btn-group" dropdown>
+                                <button class="dropdown-basic" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="menu__itens">
+                                    . . .
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-bottom shadow" id="dropdown__menu">
+                                  <img src="../../../assets/edit.svg" alt="edit"> <button (click)="editClient(result) " id="menu__button__one" (click)="showClientRegistration = true" (click)="hideElement = !hideElement"> Editar</button>
+                                  <img src="../../../assets/delete.svg" alt="delete"> <button (click)="deleteClient(result)" id="menu__button__two"> Excluir</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <p *ngIf="searchResults.length === 0;" class="align-self-center" style="background-color: #fff;">Nenhum item encontrado</p>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
