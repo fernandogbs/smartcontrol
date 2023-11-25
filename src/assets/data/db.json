@@ -1,4 +1,5 @@
 {
+  "users": [],
   "products": [
     {
       "name": "sdf",
@@ -186,7 +187,6 @@
       "id": 3
     }
   ],
-  "accounts": [],
   "employers": [
     {
       "name": "asd",
