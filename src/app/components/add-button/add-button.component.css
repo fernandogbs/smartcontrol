@@ -1,10 +1,10 @@
 #save__button{
     background: rgb(0,148,255);
     background: linear-gradient(90deg, rgba(0,148,255,1) 0%, rgba(0,148,240,1) 75%, rgba(164,217,255,1) 100%, rgba(207,235,255,1) 100%, rgba(255,255,255,1) 100%);
-    border-radius: 10px;
+    border-radius: 8px;
     font-weight: 600;
     border: none;
     color: #fff;
     size: 20px;
-    padding: 9px 21px 9px 21px;
+    padding: 15px 21px 15px 21px;
 }

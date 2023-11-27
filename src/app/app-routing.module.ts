@@ -5,13 +5,16 @@ import { ManageProductsComponent } from './pages/manage-products/manage-products
 import { ManageRequestsComponent } from './pages/manage-requests/manage-requests.component';
 import { ManageEmployersComponent } from './pages/manage-employers/manage-employers.component';
 import { LoginComponent } from './pages/login/login.component';
+import { AppComponent } from './app.component';
+import { AuthGuard } from './guards/auth.guard';
 
 
 
 const routes: Routes = [
-  {path: '', component: LoginComponent},
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: 'login', component: LoginComponent},
   {path: 'company', component: ManageClientsComponent},
-  {path: 'product', component: ManageProductsComponent},
+  {path: 'product', component: ManageProductsComponent, canActivate: [AuthGuard]},
   {path: 'request', component: ManageRequestsComponent},
   {path: 'corporation', component: ManageEmployersComponent}
 ];

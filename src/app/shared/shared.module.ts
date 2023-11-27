@@ -13,8 +13,7 @@ import { SaveButtonComponent } from '../components/save-button/save-button.compo
 import { AddButtonComponent } from '../components/add-button/add-button.component';
 
 import { LoginComponent } from '../pages/login/login.component';
-import { LoginHeaderComponent } from '../components/login-header/login-header.component';
-import { LoginLabelComponent } from '../components/login-label/login-label.component';
+
 import { LoginButtonComponent } from '../components/login-button/login-button.component';
 @NgModule({
 
@@ -28,8 +27,7 @@ import { LoginButtonComponent } from '../components/login-button/login-button.co
       SaveButtonComponent,
       AddButtonComponent,
       LoginComponent,
-      LoginHeaderComponent,
-      LoginLabelComponent,
+
       LoginButtonComponent,
       ],
    imports: [
@@ -49,8 +47,6 @@ import { LoginButtonComponent } from '../components/login-button/login-button.co
       PaymentMethodsComponent,
       AddButtonComponent,
       LoginComponent,
-      LoginHeaderComponent,
-      LoginLabelComponent,
       LoginButtonComponent,
    ],
    providers: [],

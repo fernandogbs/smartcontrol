@@ -8,7 +8,6 @@ import { User } from 'src/app/models/user';
 export class LoginButtonComponent {
   @Input() email: string = "";
   @Input() password: string = "";
-  @Input() user: User = new User();
 
 
   constructor(){}
@@ -22,9 +21,4 @@ export class LoginButtonComponent {
 
   }
 
-
-  //verificacao de login valido
-  isValidLogin(){
-    this.email != this.user.email || this.password != this.user.password;
-  }
 }
