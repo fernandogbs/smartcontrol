@@ -3,7 +3,7 @@
         <form>
             <div class="form-group">
                 <label for="estados" class="form-label">Selecione um estado:</label>
-                <select class="form-control" id="estados">
+                <select class="form-control shadow" id="estados">
                     <option value="">Selecione um estado</option>
                     <option *ngFor="let estado of estados" [value]="estado.sigla">{{ estado.nome }}</option>
                 </select>

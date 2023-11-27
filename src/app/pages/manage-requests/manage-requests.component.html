@@ -14,7 +14,7 @@
         <div class="navbar">
 
             <div class="container-fluid">
-                <h2>Novo pedido</h2>
+                <h2 style="font-weight: 700;">Novo pedido</h2>
                 <button type="reset" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="cleanForm(f)" (click)="hideElement = !hideElement" (click)="showClientRegistration = false"></button>
             </div>  
 
@@ -25,7 +25,7 @@
                 <form class="row g-3" id="add-form" (ngSubmit)="f.form.valid && saveRequest(f)" #f="ngForm" novalidate>
                     <div class="col-md-6">
                         <label for="name" class="form-label">Nome Completo:</label>
-                        <input type="text" [(ngModel)]="request.buyerName" id="name" name="name" #name="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" placeholder="Digite o nome">
+                        <input type="text" [(ngModel)]="request.buyerName" id="name" name="name" #name="ngModel" required class="form-control shadow" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" placeholder="Digite o nome">
                         <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
                             <div *ngIf="name.errors">Nome do comprador é obrigatório</div>
                         </div>
@@ -33,7 +33,7 @@
 
                     <div class="col-md-6">
                         <label for="cpf" class="form-label">CPF:</label>
-                        <input type="text" [(ngModel)]="request.cpf" id="cpf" name="cpf" #cpf="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && cpf.invalid }" placeholder="Digite o CPF">
+                        <input type="text" [(ngModel)]="request.cpf" id="cpf" name="cpf" #cpf="ngModel" required class="form-control shadow" [ngClass]="{ 'is-invalid': f.submitted && cpf.invalid }" placeholder="Digite o CPF">
                         <div *ngIf="f.submitted && cpf.invalid" class="invalid-feedback">
                             <div *ngIf="cpf.errors">CPF do comprador é obrigatório</div>
                         </div>
@@ -41,12 +41,12 @@
                     
                     <div class="col-md-6">
                         <label for="mail" class="form-label">E-mail:</label>
-                        <input type="text" [(ngModel)]="request.mail" id="mail" name="mail" #mail="ngModel" class="form-control" [ngClass]="{ 'is-invalid': f.submitted && mail.invalid }" placeholder="Email de contato">
+                        <input type="text" [(ngModel)]="request.mail" id="mail" name="mail" #mail="ngModel" class="form-control shadow" [ngClass]="{ 'is-invalid': f.submitted && mail.invalid }" placeholder="Email de contato">
                     </div>
 
                     <div class="col-md-6">
                         <label for="phoneNumber" class="form-label">Telefone:</label>
-                        <input type="number" [(ngModel)]="request.phoneNumber" id="phoneNumber" name="phoneNumber" #phoneNumber="ngModel" class="form-control" [ngClass]="{ 'is-invalid': f.submitted && phoneNumber.invalid }" placeholder="Telefone de contato">
+                        <input type="number" [(ngModel)]="request.phoneNumber" id="phoneNumber" name="phoneNumber" #phoneNumber="ngModel" class="form-control shadow" [ngClass]="{ 'is-invalid': f.submitted && phoneNumber.invalid }" placeholder="Telefone de contato">
                         <div *ngIf="f.submitted && address.invalid" class="invalid-feedback">
                             <div *ngIf="phoneNumber.errors">Telefone de contato é obrigatório</div>
                         </div>
@@ -54,7 +54,7 @@
                     
                     <div class="col-12">
                         <label for="address" class="form-label">Endereço:</label>
-                        <input type="text" [(ngModel)]="request.address" id="address" name="address" #address="ngModel" class="form-control" [ngClass]="{ 'is-invalid': f.submitted && address.invalid }" placeholder="Digite o endereço">
+                        <input type="text" [(ngModel)]="request.address" id="address" name="address" #address="ngModel" class="form-control shadow" [ngClass]="{ 'is-invalid': f.submitted && address.invalid }" placeholder="Digite o endereço">
                         <div *ngIf="f.submitted && address.invalid" class="invalid-feedback">
                             <div *ngIf="address.errors">Endereço do comprador é obrigatório</div>
                         </div>
@@ -62,12 +62,12 @@
                     
                     <div class="col-12">
                         <label for="adressComplement" class="form-label">Complemento:</label>
-                        <input type="text" [(ngModel)]="request.adressComplement" id="address" name="adressComplement" #adressComplement="ngModel" class="form-control" [ngClass]="{ 'is-invalid': f.submitted && adressComplement.invalid }" placeholder="Complemento">
+                        <input type="text" [(ngModel)]="request.adressComplement" id="address" name="adressComplement" #adressComplement="ngModel" class="form-control shadow" [ngClass]="{ 'is-invalid': f.submitted && adressComplement.invalid }" placeholder="Complemento">
                     </div>
                     
                     <div class="col-md-6">
                         <label for="city" class="form-label">Cidade:</label>
-                        <input type="text" [(ngModel)]="request.city" id="city" name="city" #city="ngModel" class="form-control" [ngClass]="{ 'is-invalid': f.submitted && city.invalid }" placeholder="Cidade">
+                        <input type="text" [(ngModel)]="request.city" id="city" name="city" #city="ngModel" class="form-control shadow" [ngClass]="{ 'is-invalid': f.submitted && city.invalid }" placeholder="Cidade">
                         <div *ngIf="f.submitted && city.invalid" class="invalid-feedback">
                             <div *ngIf="address.errors">Cidade do comprador é obrigatório</div>
                         </div>
@@ -75,7 +75,7 @@
 
                     <div class="col-md-2">
                         <label for="cep" class="form-label">CEP:</label>
-                        <input type="number" [(ngModel)]="request.cep" class="form-control" id="cep" name="cep" #cep="ngModel" required [ngClass]="{'is-invalid': f.submitted && cep.invalid}" placeholder="CEP">
+                        <input type="number" [(ngModel)]="request.cep" class="form-control shadow" id="cep" name="cep" #cep="ngModel" required [ngClass]="{'is-invalid': f.submitted && cep.invalid}" placeholder="CEP">
                         <div *ngIf="f.submitted && cep.invalid" class="invalid-feedback">
                             <div *ngIf="cep.errors">CEP é obrigatório</div>
                         </div>
@@ -95,14 +95,14 @@
 
                     <div class="col-md-4">
                         <label for="price" class="form-label">Preço:</label>
-                        <input type="number" [(ngModel)]="request.price" id="price" name="price" #price="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && price.invalid }" placeholder="Digite o preço">
+                        <input type="number" [(ngModel)]="request.price" id="price" name="price" #price="ngModel" required class="form-control shadow" [ngClass]="{ 'is-invalid': f.submitted && price.invalid }" placeholder="Digite o preço">
                         <div *ngIf="f.submitted && price.invalid" class="invalid-feedback">
                             <div *ngIf="price.errors">Preço é obrigatório</div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <label for="amount" class="form-label">Quantidade:</label>
-                        <input type="number" [(ngModel)]="request.amount" id="amount" name="amount" #amount="ngModel" required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && amount.invalid }" placeholder="Digite a quantidade">
+                        <input type="number" [(ngModel)]="request.amount" id="amount" name="amount" #amount="ngModel" required class="form-control shadow" [ngClass]="{ 'is-invalid': f.submitted && amount.invalid }" placeholder="Digite a quantidade">
                         <div *ngIf="f.submitted && amount.invalid" class="invalid-feedback">
                             <div *ngIf="amount.errors">Quantidade é obrigatório</div>
                         </div>

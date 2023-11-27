@@ -8,11 +8,13 @@ import { ManageRequestsComponent } from '../pages/manage-requests/manage-request
 import { ManageEmployersComponent } from '../pages/manage-employers/manage-employers.component';
 import { StatesComponent } from '../components/states/states.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-
 import { PaymentMethodsComponent } from '../components/payment-methods/payment-methods.component';
 import { SaveButtonComponent } from '../components/save-button/save-button.component';
 import { AddButtonComponent } from '../components/add-button/add-button.component';
 
+import { LoginComponent } from '../pages/login/login.component';
+
+import { LoginButtonComponent } from '../components/login-button/login-button.component';
 @NgModule({
 
    declarations: [
@@ -24,6 +26,9 @@ import { AddButtonComponent } from '../components/add-button/add-button.componen
       PaymentMethodsComponent,
       SaveButtonComponent,
       AddButtonComponent,
+      LoginComponent,
+
+      LoginButtonComponent,
       ],
    imports: [
       CommonModule, 
@@ -41,6 +46,8 @@ import { AddButtonComponent } from '../components/add-button/add-button.componen
       SaveButtonComponent,
       PaymentMethodsComponent,
       AddButtonComponent,
+      LoginComponent,
+      LoginButtonComponent,
    ],
    providers: [],
 

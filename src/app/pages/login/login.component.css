@@ -1,0 +1,52 @@
+#save__button{
+    background: rgb(0,148,255);
+    background: linear-gradient(90deg, rgba(0,148,255,1) 0%, rgba(0,148,240,1) 75%, rgba(164,217,255,1) 100%, rgba(207,235,255,1) 100%, rgba(255,255,255,1) 100%);
+    border-radius: 10px;
+    font-weight: 600;
+    border: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 20px;
+}
+
+.form-control.is-invalid{
+    background-image: none;
+}
+
+form{
+    height: 100vh; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+h1{
+    font-size: 64px; text-align: center; font-weight: 700; 
+}
+
+@media (max-width: 768px) {
+    form{
+        width: 100%;
+    }
+
+    #username{
+        width: 100% !important;
+    }
+
+    #password{
+        width: 100% !important;
+    }
+
+}

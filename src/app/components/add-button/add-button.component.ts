@@ -7,4 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class AddButtonComponent {
   @Input() text: string = 'Add'
+  @Input() sizeButton: string = ''
+  @Input() height: string = ''
 }
