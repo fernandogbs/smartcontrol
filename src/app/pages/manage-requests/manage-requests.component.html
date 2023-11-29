@@ -51,8 +51,16 @@
                             <div *ngIf="phoneNumber.errors">Telefone de contato é obrigatório</div>
                         </div>
                     </div>
-                    
+
                     <div class="col-12">
+                        <label for="requestName" class="form-label">Pedido</label>
+                        <input type="text" [(ngModel)]="request.requestName" id="requestName" #requestName="ngModel" class="form-control shadow" [ngClass]="{'is-invalid': f.submitted && requestName.invalid}" placeholder="Nome do pedido">
+                        <div *ngIf="f.submitted && requestName.invalid" class="invalid-feedback">
+                            <div *ngIf="requestName.errors">Nome do pedido é obrigatório</div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
                         <label for="address" class="form-label">Endereço:</label>
                         <input type="text" [(ngModel)]="request.address" id="address" name="address" #address="ngModel" class="form-control shadow" [ngClass]="{ 'is-invalid': f.submitted && address.invalid }" placeholder="Digite o endereço">
                         <div *ngIf="f.submitted && address.invalid" class="invalid-feedback">
@@ -60,7 +68,7 @@
                         </div>
                     </div>
                     
-                    <div class="col-12">
+                    <div class="col-md-6">
                         <label for="adressComplement" class="form-label">Complemento:</label>
                         <input type="text" [(ngModel)]="request.adressComplement" id="address" name="adressComplement" #adressComplement="ngModel" class="form-control shadow" [ngClass]="{ 'is-invalid': f.submitted && adressComplement.invalid }" placeholder="Complemento">
                     </div>
@@ -119,7 +127,7 @@
     </div>
         <div class="table-responsive overflow-auto" style="max-height: 500px;" *ngIf="!hideTable">
             <table class="table caption-top table-secondary" *ngIf="!hideElement">
-                <caption>Lista de Pedidos</caption>
+                <caption style="font-weight: 700; font-size: 24px; color: #000;">Lista de pedidos</caption>
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -152,7 +160,7 @@
         </div>
         <div class="table-responsive overflow-auto" style="max-height: 500px;"  *ngIf="hideTable">
             <table class="table caption-top table-secondary" *ngIf="!showSearchTable">
-                <caption>Lista de Produtos</caption>
+                <caption style="font-weight: 700; font-size: 24px; color: #000;">Lista de pedidos</caption>
                 <thead>
                     <tr>
                         <th scope="col">ID</th>

@@ -17,4 +17,5 @@ export interface Request{
     cardExpirationDate: string;
     cardCvv: number
     phoneNumber: number;
+    requestName: string;
 }

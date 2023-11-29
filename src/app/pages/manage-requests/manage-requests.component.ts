@@ -28,14 +28,12 @@ export class ManageRequestsComponent implements OnInit{
   searchActive: boolean = false;
   showSearchTable: boolean = true;
   hideTable: boolean = false
-  
 
   constructor(private requestService: RequestService) {}
   
   ngOnInit() {
     this.getRequest();
   }
-
 
       //pesquisa por produtos
   search(): any {
@@ -58,8 +56,6 @@ export class ManageRequestsComponent implements OnInit{
       this.hideTable = false;
     }
   }
-
-
 
   //formulario para criação de novo pedido
   saveRequest(form: NgForm){

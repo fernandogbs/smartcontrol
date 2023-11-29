@@ -73,8 +73,8 @@
         </div>
         <div class="table-responsive overflow-auto" style="max-height: 500px;"  *ngIf="!hideTable">
             <table class="table caption-top table-secondary" *ngIf="!hideElement">
-                <caption>Lista de Clientes</caption>
-                <thead>
+                <caption style="font-weight: 700; font-size: 24px; color: #000;">Lista de clientes</caption>
+                <thead class="table">
                     <tr>
                         <th scope="col">Nome</th>
                         <th scope="col">E-mail</th>
@@ -84,7 +84,7 @@
                         <th scope="col">Ações</th>
                     </tr>
                 </thead>
-                <tbody class="overflow-auto">
+                <tbody>
                     <tr *ngFor="let client of clients">
                         <td>{{client.name}}</td>
                         <td>{{client.mailAddress}}</td>
@@ -108,7 +108,7 @@
         </div>
         <div class="table-responsive overflow-auto" style="max-height: 500px;"  *ngIf="hideTable">
             <table class="table caption-top table-secondary" *ngIf="!showSearchTable">
-                <caption>Lista de Clientes</caption>
+                <caption style="font-weight: 700; font-size: 24px; color: #000;">Lista de clientes</caption>
                 <thead >
                     <tr>
                         <th scope="col">Nome</th>
@@ -119,7 +119,7 @@
                         <th scope="col">Ações</th>
                     </tr>
                 </thead>
-                <tbody class="overflow-auto">
+                <tbody>
                     <tr *ngFor="let result of searchResults">
                         <td>{{result.name}}</td>
                         <td>{{result.mailAddress}}</td>
