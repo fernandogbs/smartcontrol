@@ -17,7 +17,17 @@
       "id": 1
     }
   ],
-  "clients": [],
+  "clients": [
+    {
+      "name": "teste",
+      "mailAddress": "teste@gmail.com",
+      "corporateReason": "Teste",
+      "cpf": 920390293,
+      "cnpj": 23940823048,
+      "phoneNumber": 8430284034,
+      "id": 1
+    }
+  ],
   "requests": [
     {
       "buyerName": "asd",
@@ -28,5 +38,13 @@
       "id": 1
     }
   ],
-  "employers": []
+  "employers": [
+    {
+      "name": "fjodasmn",
+      "mailAddress": "fndkpsan",
+      "cpf": 32489849032,
+      "phoneNumber": 53287057,
+      "id": 1
+    }
+  ]
 }
