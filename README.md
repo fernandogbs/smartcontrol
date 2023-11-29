@@ -14,3 +14,6 @@ Como banco de dados local, o arquivo está utilizando um .json para gravar dados
 
 Dentro da pasta principal, utilize o comando `json-server --watch src/assets/data/db.json` e após isso atualize a aplicação no navegador. Então já deve gerar o conteúdo gravado.
 
+## Login
+
+Por padrão o usuário é "admin" e a senha "admin". Utilize ambos respectivamente na tela inicial.
