@@ -4,20 +4,11 @@ Esse projeto está utilizando do [Angular CLI](https://github.com/angular/angula
 
 ## Servidor de desenvolvimento
 
-Rode no terminal `ng serve` para criar um servidor de desenvolvimento. Na barra de pesquisa utilize pela URL: `http://localhost:4200/`. A aplicação vai carregar automáticamente e renderizar o conteúdo.
+Rode no terminal `ng serve --open` ou `ng serve` para criar um servidor de desenvolvimento. Na barra de pesquisa utilize pela URL: `http://localhost:4200/`. A aplicação vai carregar automáticamente e renderizar o conteúdo.
 
-## Build
+## Abrir banco de dados local e utilizar a FAKE API REST
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Como banco de dados local, o arquivo está utilizando um .json para gravar dados. Para rodar o servidor é necessário o uso do json-server;
+`npm i json-server` para instalar o servidor do banco de dados;
+Dentro da pasta principal, utilize o comando `json-server --watch src/assets/data/db.json` e após isso atualize a aplicaçõ no navegador. Então já deve gerar o conteúdo gravado.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
