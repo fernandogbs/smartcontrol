@@ -1,0 +1,123 @@
+
+.workbench{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    justify-content: space-between;
+}
+
+#save__button{
+    background: rgb(0,148,255);
+    background: linear-gradient(90deg, rgba(0,148,255,1) 0%, rgba(0,148,240,1) 75%, rgba(164,217,255,1) 100%, rgba(207,235,255,1) 100%, rgba(255,255,255,1) 100%);
+    border-radius: 10px;
+    font-weight: 600;
+    border: none;
+    color: #fff;
+    size: 20px;
+    padding: 9px 21px 9px 21px;
+}
+
+.form-group-small {
+    width: 80%; /* or any other size you want */
+    margin: auto; /* to center the form-group */
+}
+
+.container-small{
+    width: 70%;
+    margin: auto;
+}
+
+.cancel__button{
+    background: none;
+    border: none;
+}
+
+#menu__button__one, #menu__button__two{
+    border: none;
+    background-color: #fff;
+}
+
+#menu__itens{
+    border: none;
+    color: #8F90A6;
+    font-weight: bolder;
+    background: #FAFAFC80;
+}
+
+table td, th {
+    border:none !important;
+}
+
+
+#dropdown__menu{
+    width: 96px !important;
+    height: 73px !important;
+    flex-shrink: 0 !important;
+}
+
+.dropdown-menu-bottom{
+    min-width: 30px !important;
+    max-width: 100px !important;
+    padding-left: 3px !important;
+    flex-shrink: 0 !important;
+    border-radius: 15px !important;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 15px;
+    top: 65%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+
+.table-secondary {
+    --bs-table-color: #000;
+    --bs-table-bg: #FAFAFC80;
+    --bs-table-border-color: #FAFAFC80;
+    --bs-table-striped-bg: #FAFAFC80;
+    --bs-table-striped-color: #000;
+    --bs-table-active-bg: #FAFAFC80;
+    --bs-table-active-color: #000;
+    --bs-table-hover-bg: #FAFAFC80;
+    --bs-table-hover-color: #000;
+    color: var(--bs-table-color);
+    border-color: var(--bs-table-border-color);
+}
+
+@media (orientation: portrait){
+    .workbench {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        margin: auto;
+    }
+
+    #inputArea{
+        margin-top: 15px;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #ffffff; 
+    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.5); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: #ffffff; 
+}

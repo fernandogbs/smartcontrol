@@ -11,12 +11,10 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { PaymentMethodsComponent } from '../components/payment-methods/payment-methods.component';
 import { SaveButtonComponent } from '../components/save-button/save-button.component';
 import { AddButtonComponent } from '../components/add-button/add-button.component';
-
 import { LoginComponent } from '../pages/login/login.component';
-
 import { LoginButtonComponent } from '../components/login-button/login-button.component';
+import { ManageUsersComponent } from '../pages/manage-users/manage-users.component';
 @NgModule({
-
    declarations: [
       ManageClientsComponent, 
       ManageProductsComponent, 
@@ -27,15 +25,15 @@ import { LoginButtonComponent } from '../components/login-button/login-button.co
       SaveButtonComponent,
       AddButtonComponent,
       LoginComponent,
-
       LoginButtonComponent,
+      ManageUsersComponent,
+
       ],
    imports: [
       CommonModule, 
       HttpClientModule, 
       FormsModule,
       NoopAnimationsModule,
-
       ],
    exports: [
       ManageClientsComponent, 
@@ -48,9 +46,9 @@ import { LoginButtonComponent } from '../components/login-button/login-button.co
       AddButtonComponent,
       LoginComponent,
       LoginButtonComponent,
+      ManageUsersComponent,
    ],
    providers: [],
-
 })
 
 export class SharedModule {}

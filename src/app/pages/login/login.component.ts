@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit{
   }
 
   //permite ver a senha
-  hidePassword = true;
+  hidePassword: boolean = true;
   togglePassword(): void {
     this.hidePassword = !this.hidePassword;
   }
