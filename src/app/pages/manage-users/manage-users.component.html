@@ -1,0 +1,142 @@
+<div class="container-sm">
+    <div>
+        <div class="workbench" *ngIf="!hideElement">
+            <div>
+                <input id="inputArea" class="form-control shadow bg-body-tertiary rounded" [(ngModel)]="searchTerm" (input)="search()"
+                width="200" height="30" placeholder="Pesquisar por usuários...">
+            </div>
+            <br>
+            <app-add-button id="addButton" (click)="showClientRegistration = true" (click)="hideElement = !hideElement" text="Adicionar usuario"></app-add-button>
+        </div>
+    </div>
+    <br>
+    <div class="container container-small" *ngIf="showClientRegistration">
+        <div class="navbar">
+            <div class="container-fluid">
+                <h2 style="font-weight: 700;">Cadastro de usuário</h2>
+                <button type="reset" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="cleanForm(f)" (click)="hideElement = !hideElement" (click)="showClientRegistration = false"></button>
+            </div>
+        </div>
+        <div class="card add-user">
+            <div class="card-body">
+                <form id="add-form" (ngSubmit)="f.form.valid && addUser(f)" #f="ngForm" novalidate>
+                    <div class="form-group mb-3">
+                        <label for="username">Nome:</label>
+                        <input type="text" [(ngModel)]="user.username" id="username" name="username" #username="ngModel" required class="form-control shadow" [ngClass]="{ 'is-invalid': f.submitted && username.invalid }" placeholder="Digite o usuário">
+                        <div *ngIf="f.submitted && username.invalid" class="invalid-feedback">
+                            <div *ngIf="username.errors">Nome é obrigatório</div>
+                        </div>
+                    </div>
+                
+                    <div class="form-group mb-3 position-relative">
+                        <label for="password">Senha:</label>
+                        <input type="{{ hidePassword ? 'password' : 'text' }}" [(ngModel)]="user.password" id="password" name="password" #password="ngModel" required class="form-control shadow" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" placeholder="Senha">
+                        <span class="password-toggle" (click)="togglePassword()" >
+                            <img src="assets/eye-off.svg" alt="Ícone de senha"  *ngIf="hidePassword" />
+                            <img src="assets/eye.svg" alt="Ícone de senha oculta" *ngIf="!hidePassword" />
+                        </span>
+                        <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+                            <div *ngIf="password.errors">Preço é obrigatório</div>
+                        </div>
+                    </div>
+                
+                    <div class="form-group mb-3">
+                        <label for="role">Cargo:</label>
+                        <input type="text" [(ngModel)]="user.role" id="role" name="role" #role="ngModel" required class="form-control shadow" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" placeholder="Cargo">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="email">Email:</label>
+                        <input type="email" [(ngModel)]="user.email" id="email" name="email" #email="ngModel" required class="form-control shadow" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" placeholder="Email">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="phone">Contato:</label>
+                        <input type="tel" [(ngModel)]="user.phone" id="phone" name="phone" #phone="ngModel" required class="form-control shadow" [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }" placeholder="Contato">
+                    </div>
+        
+                    <br>
+                    <app-save-button></app-save-button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+
+    
+    <div class="table-responsive overflow-auto" style="max-height: 500px;"  *ngIf="!hideTable">
+        <table class="table caption-top table-secondary" *ngIf="!hideElement">
+            <caption style="font-weight: 700; font-size: 24px; color: #000;">Lista de usuários</caption>
+            <thead class="table">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Cargo</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Contato</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>{{user.id}}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.role}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.phone}}</td>
+                    <td>
+                        <div class="btn-group" dropdown>
+                            <button class="dropdown-basic" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="menu__itens">
+                                . . .
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-bottom shadow" id="dropdown__menu">
+                                <img src="../../../assets/edit.svg" alt="edit"> <button (click)="editUser(user) " id="menu__button__one" (click)="showClientRegistration = true" (click)="hideElement = !hideElement"> Editar</button>
+                                <img src="../../../assets/delete.svg" alt="delete"> <button (click)="deleteUser(user)" id="menu__button__two"> Excluir</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!--TABELA PADRAO-->
+
+    <!--TABELA PESQUISA-->
+    <div class="table-responsive overflow-auto" style="max-height: 500px;" *ngIf="hideTable">
+        <table class="table caption-top table-secondary" *ngIf="!showSearchTable">
+            <caption style="font-weight: 700; font-size: 24px; color: #000;">Lista de produtos</caption>
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Cargo</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Contato</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let result of searchResults">
+                    <td>{{result.id}}</td>
+                    <td>{{result.username}}</td>
+                    <td>{{result.role}}</td>
+                    <td>{{result.email}}</td>
+                    <td>{{result.phone}}</td>
+                    <td>
+                        <div class="btn-group" dropdown>
+                            <button class="dropdown-basic" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="menu__itens">
+                                . . .
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-bottom shadow" id="dropdown__menu">
+                              <img src="../../../assets/edit.svg" alt="edit"> <button (click)="editUser(result) " id="menu__button__one" (click)="showClientRegistration = true" (click)="hideElement = !hideElement"> Editar</button>
+                              <img src="../../../assets/delete.svg" alt="delete"> <button (click)="deleteUser(result)" id="menu__button__two"> Excluir</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <p *ngIf="searchResults.length === 0;" class="align-self-center" style="background-color: #fff;">Nenhum item encontrado</p>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -7,6 +7,7 @@ import { ManageEmployersComponent } from './pages/manage-employers/manage-employ
 import { LoginComponent } from './pages/login/login.component';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './guards/auth.guard';
+import { ManageUsersComponent } from './pages/manage-users/manage-users.component';
 
 
 
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'company', component: ManageClientsComponent},
   {path: 'product', component: ManageProductsComponent, canActivate: [AuthGuard]},
   {path: 'request', component: ManageRequestsComponent},
-  {path: 'corporation', component: ManageEmployersComponent}
+  {path: 'corporation', component: ManageEmployersComponent},
+  {path: 'control', component: ManageUsersComponent}
 ];
 
 @NgModule({

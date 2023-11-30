@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, catchError, retry, tap, throwError } from 'rxjs';
 import { User } from '../models/user';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class AuthService {
   isAuthenticated = false;
   
   url = 'http://localhost:3000/users';
+
 
   constructor(private httpClient: HttpClient, private router: Router) {}
 
@@ -42,8 +44,6 @@ export class AuthService {
     });
   }
 
-
-
   getUser(): Observable<User[]> {
     return this.httpClient.get<User[]>(this.url)
     .pipe(retry(2),
@@ -51,6 +51,28 @@ export class AuthService {
     );
   }
 
+  deleteUser(user: User): Observable<User>{
+    return this.httpClient.delete<User>(this.url + '/' + user.id, this.httpOptions)
+    .pipe(
+      retry(1), 
+      catchError(this.handleError)
+    );
+  }
+
+  updateUser(user: User): Observable<User>{
+    return this.httpClient.put<User>(this.url + '/' + user.id, JSON.stringify(user), this.httpOptions)
+    .pipe(
+      retry(1), 
+      catchError(this.handleError)
+    );
+  }
+
+  addUser(user: User): Observable<User>{
+    return this.httpClient.post<User>(this.url, JSON.stringify(user), this.httpOptions)
+    .pipe(retry(2), 
+      catchError(this.handleError)
+    );
+  }
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = '';
