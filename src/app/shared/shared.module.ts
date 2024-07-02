@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { ManageClientsComponent } from '../pages/manage-clients/manage-clients.component';
 import { ManageProductsComponent } from '../pages/manage-products/manage-products.component';
 import { ManageRequestsComponent } from '../pages/manage-requests/manage-requests.component';
@@ -12,7 +12,7 @@ import { PaymentMethodsComponent } from '../components/payment-methods/payment-m
 import { SaveButtonComponent } from '../components/save-button/save-button.component';
 import { AddButtonComponent } from '../components/add-button/add-button.component';
 import { LoginComponent } from '../pages/login/login.component';
-import { LoginButtonComponent } from '../components/login-button/login-button.component';
+import { ButtonComponent } from '../components/button/button.component';
 import { ManageUsersComponent } from '../pages/manage-users/manage-users.component';
 @NgModule({
    declarations: [
@@ -25,9 +25,8 @@ import { ManageUsersComponent } from '../pages/manage-users/manage-users.compone
       SaveButtonComponent,
       AddButtonComponent,
       LoginComponent,
-      LoginButtonComponent,
+      ButtonComponent,
       ManageUsersComponent,
-
       ],
    imports: [
       CommonModule, 
@@ -45,7 +44,7 @@ import { ManageUsersComponent } from '../pages/manage-users/manage-users.compone
       PaymentMethodsComponent,
       AddButtonComponent,
       LoginComponent,
-      LoginButtonComponent,
+      ButtonComponent,
       ManageUsersComponent,
    ],
    providers: [],
