@@ -1,33 +1,32 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule, NgForm } from '@angular/forms';
-import { ManageClientsComponent } from '../pages/manage-clients/manage-clients.component';
-import { ManageProductsComponent } from '../pages/manage-products/manage-products.component';
-import { ManageRequestsComponent } from '../pages/manage-requests/manage-requests.component';
-import { ManageEmployersComponent } from '../pages/manage-employers/manage-employers.component';
-import { StatesComponent } from '../components/states/states.component';
+import { FormsModule } from '@angular/forms';
+import { CustomersComponent } from '../components/modules/customers/customers.component';
+import { ProductsComponent } from '../components/modules/products/products.component';
+import { RequestsComponent } from '../components/modules/requests/requests.component';
+import { EmployeesComponent } from '../components/modules/employees/employees.component';
+import { StatesComponent } from '../components/elements/states/states.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { PaymentMethodsComponent } from '../components/payment-methods/payment-methods.component';
-import { SaveButtonComponent } from '../components/save-button/save-button.component';
-import { AddButtonComponent } from '../components/add-button/add-button.component';
-import { LoginComponent } from '../pages/login/login.component';
-import { LoginButtonComponent } from '../components/login-button/login-button.component';
-import { ManageUsersComponent } from '../pages/manage-users/manage-users.component';
+import { PaymentMethodsComponent } from '../components/elements/payment-methods/payment-methods.component';
+import { SaveButtonComponent } from '../components/elements/save-button/save-button.component';
+import { LoginComponent } from '../components/modules/login/login.component';
+import { ButtonComponent } from '../components/elements/button/button.component';
+import { UsersComponent } from '../components/modules/users/users.component';
+import { SearchbarComponent } from '../components/elements/searchbar/searchbar.component';
 @NgModule({
    declarations: [
-      ManageClientsComponent, 
-      ManageProductsComponent, 
-      ManageRequestsComponent, 
-      ManageEmployersComponent,
+      CustomersComponent, 
+      ProductsComponent, 
+      RequestsComponent, 
+      EmployeesComponent,
       StatesComponent,
       PaymentMethodsComponent,
       SaveButtonComponent,
-      AddButtonComponent,
       LoginComponent,
-      LoginButtonComponent,
-      ManageUsersComponent,
-
+      ButtonComponent,
+      SearchbarComponent,
+      UsersComponent
       ],
    imports: [
       CommonModule, 
@@ -36,17 +35,17 @@ import { ManageUsersComponent } from '../pages/manage-users/manage-users.compone
       NoopAnimationsModule,
       ],
    exports: [
-      ManageClientsComponent, 
-      ManageProductsComponent, 
-      ManageRequestsComponent, 
-      ManageEmployersComponent,
+      CustomersComponent, 
+      ProductsComponent, 
+      RequestsComponent, 
+      EmployeesComponent,
       StatesComponent,
-      SaveButtonComponent,
       PaymentMethodsComponent,
-      AddButtonComponent,
+      SaveButtonComponent,
       LoginComponent,
-      LoginButtonComponent,
-      ManageUsersComponent,
+      ButtonComponent,
+      SearchbarComponent,
+      UsersComponent
    ],
    providers: [],
 })

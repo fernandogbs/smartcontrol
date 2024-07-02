@@ -1,0 +1,39 @@
+.form-control.is-invalid{
+    background-image: none;
+}
+
+form{
+    height: 100vh; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+h1{
+    font-size: 64px; text-align: center; font-weight: 700; 
+}
+
+@media (max-width: 768px) {
+    form{
+        width: 100%;
+    }
+
+    #username{
+        width: 100% !important;
+    }
+
+    #password{
+        width: 100% !important;
+    }
+
+}

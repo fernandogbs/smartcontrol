@@ -1,0 +1,129 @@
+<div class="container-sm">
+    <div>
+        <div class="workbench" *ngIf="!hideElement">
+            <Searchbar-element [(ngModel)]="searchTerm" (input)="search()"></Searchbar-element>
+            <br>
+            <Button-element (click)="showClientRegistration = true" (click)="hideElement = !hideElement" text="Adicionar Produto"></Button-element>
+        </div>
+    </div>
+    <br>
+    <div class="container-fluid" *ngIf="showClientRegistration">
+        <div class="navbar">
+
+            <div class="container-fluid">
+                <h2 style="font-weight: 700;">Cadastro de produto</h2>
+                <button type="reset" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="cleanForm(f)" (click)="hideElement = !hideElement" (click)="showClientRegistration = false"></button>
+            </div>
+
+        </div>
+
+        <!--CARD PARA CRIACAO DE OBJETO-->
+        <div class="container-fluid card add-client">
+            <div class="card-body">
+                <form id="add-form" (ngSubmit)="f.form.valid && saveProduct(f)" #f="ngForm" novalidate>
+                    <div class="form-group mb-4">
+                        <label for="name">Nome</label>
+                        <input type="text" [(ngModel)]="product.name" id="name" name="name" #name="ngModel" required class="form-control shadow" [ngClass]="{ 'is-invalid': f.submitted && name.invalid }" placeholder="Digite o nome">
+                        <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                            <div *ngIf="name.errors">Nome é obrigatório</div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label for="price">Preço</label>
+                        <input type="number" [(ngModel)]="product.price" id="price" name="price" #price="ngModel" required class="form-control shadow" [ngClass]="{ 'is-invalid': f.submitted && price.invalid }" placeholder="Digite o preço">
+                        <div *ngIf="f.submitted && price.invalid" class="invalid-feedback">
+                            <div *ngIf="price.errors">Preço é obrigatório</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Quantidade</label>
+                        <input type="number" [(ngModel)]="product.amount" id="amount" name="amount" #amount="ngModel" required class="form-control shadow" [ngClass]="{ 'is-invalid': f.submitted && amount.invalid }" placeholder="Digite a quantidade">
+                        <div *ngIf="f.submitted && amount.invalid" class="invalid-feedback">
+                            <div *ngIf="amount.errors">Quantidade é obrigatório</div>
+                        </div>
+                    </div>
+
+                    <br>
+                    <Button-element text="Salvar"></Button-element>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--CARD PARA CRIACAO DE OBJETO-->
+
+    <!--TABELA PADRAO-->
+    <div class="table-responsive overflow-auto" style="max-height: 500px;"  *ngIf="!hideTable">
+        <table class="table caption-top table-secondary" *ngIf="!hideElement">
+            <caption style="font-weight: 700; font-size: 24px; color: #000;">Lista de produtos</caption>
+            <thead class="table">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Preço</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products">
+                    <td>{{product.id}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.amount}}</td>
+                    <td>{{product.price | currency: 'BRL'}}</td>
+                    <td>
+                        <div class="btn-group" dropdown>
+                            <button class="dropdown-basic" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="menu__itens">
+                                . . .
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-bottom shadow" id="dropdown__menu">
+                                <img src="../../../assets/edit.svg" alt="edit"> <button (click)="editProduct(product) " id="menu__button__one" (click)="showClientRegistration = true" (click)="hideElement = !hideElement"> Editar</button>
+                                <img src="../../../assets/delete.svg" alt="delete"> <button (click)="deleteProduct(product)" id="menu__button__two"> Excluir</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!--TABELA PADRAO-->
+
+    <!--TABELA PESQUISA-->
+    <div class="table-responsive overflow-auto" style="max-height: 500px;" *ngIf="hideTable">
+        <table class="table caption-top table-secondary" *ngIf="!showSearchTable">
+            <caption style="font-weight: 700; font-size: 24px; color: #000;">Lista de produtos</caption>
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Preço</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let result of searchResults">
+                    <td>{{result.id}}</td>
+                    <td>{{result.name}}</td>
+                    <td>{{result.amount}}</td>
+                    <td>{{result.price | currency: 'BRL'}}</td>
+                    <td>
+                        <div class="btn-group" dropdown>
+                            <button class="dropdown-basic" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="menu__itens">
+                                . . .
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-bottom shadow" id="dropdown__menu">
+                              <img src="../../../assets/edit.svg" alt="edit"> <button (click)="editProduct(result) " id="menu__button__one" (click)="showClientRegistration = true" (click)="hideElement = !hideElement"> Editar</button>
+                              <img src="../../../assets/delete.svg" alt="delete"> <button (click)="deleteProduct(result)" id="menu__button__two"> Excluir</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <p *ngIf="searchResults.length === 0;" class="align-self-center" style="background-color: #fff;">Nenhum item encontrado</p>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!--TABELA PESQUISA-->
+
+</div>
