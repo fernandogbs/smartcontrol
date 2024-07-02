@@ -5,12 +5,12 @@ import { Client } from 'src/app/models/client';
 
 
 @Component({
-  selector: 'app-manage-clients',
-  templateUrl: './manage-clients.component.html',
-  styleUrls: ['./manage-clients.component.css'],
+  selector: 'app-manage-customers',
+  templateUrl: './customers.component.html',
+  styleUrls: ['./customers.component.css'],
 })
 
-export class ManageClientsComponent implements OnInit {
+export class CustomersComponent implements OnInit {
   
   //variaveis de comportamento
   hideElement: boolean = false;
@@ -30,9 +30,6 @@ export class ManageClientsComponent implements OnInit {
   showSearchTable: boolean = true;
   hideTable: boolean = false
   
-  
-
-
   constructor(private clientService: ClientService) {
  
   }

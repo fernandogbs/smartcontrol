@@ -14,7 +14,6 @@ registerLocaleData(ptBr);
   declarations: [
     AppComponent,
     NavbarComponent,
-
   ],
   imports: [
     SharedModule,

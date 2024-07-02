@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'Button',
-  templateUrl: './button.component.html',
+  selector: 'Button-element',
+  template: `<button id="_button">{{text}}</button>`,
   styleUrls: ['./button.component.css']
 })
 

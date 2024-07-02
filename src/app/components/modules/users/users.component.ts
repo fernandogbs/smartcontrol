@@ -7,11 +7,11 @@ import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
-  selector: 'app-manage-users',
-  templateUrl: './manage-users.component.html',
-  styleUrls: ['./manage-users.component.css']
+  selector: 'app-users',
+  templateUrl: './users.component.html',
+  styleUrls: ['./users.component.css']
 })
-export class ManageUsersComponent implements OnInit{
+export class UsersComponent implements OnInit{
   showAddUserForm: boolean = false;
   hideElement: boolean = false;
   showClientRegistration: boolean = false;

@@ -5,13 +5,13 @@ import { NgForm, FormsModule } from '@angular/forms';
 
 
 @Component({
-  selector: 'app-manage-products',
-  templateUrl: './manage-products.component.html',
-  styleUrls: ['./manage-products.component.css']
+  selector: 'app-products',
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.css']
 })
 
 
-export class ManageProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit {
   
   //variaveis de comportamento
   hideElement: boolean = false;

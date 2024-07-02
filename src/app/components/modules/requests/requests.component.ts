@@ -5,11 +5,11 @@ import { Request } from 'src/app/models/request';
 import { RequestService } from 'src/app/services/request.service';
 
 @Component({
-  selector: 'app-manage-requests',
-  templateUrl: './manage-requests.component.html',
-  styleUrls: ['./manage-requests.component.css']
+  selector: 'app-requests',
+  templateUrl: './requests.component.html',
+  styleUrls: ['./requests.component.css']
 })
-export class ManageRequestsComponent implements OnInit{
+export class RequestsComponent implements OnInit{
   request = {} as Request;
   requests: Request[] = [];
   content: any;

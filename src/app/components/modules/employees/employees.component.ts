@@ -4,11 +4,11 @@ import { EmployerService } from 'src/app/services/employer.service';
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-manage-employers',
-  templateUrl: './manage-employers.component.html',
-  styleUrls: ['./manage-employers.component.css']
+  selector: 'app-manage-employees',
+  templateUrl: './employees.component.html',
+  styleUrls: ['./employees.component.css']
 })
-export class ManageEmployersComponent implements OnInit{
+export class EmployeesComponent implements OnInit{
 
   //variaveis de comportamento
   hideElement: boolean = false;
@@ -28,8 +28,6 @@ export class ManageEmployersComponent implements OnInit{
   searchActive: boolean = false;
   showSearchTable: boolean = true;
   hideTable: boolean = false
-    
-
 
   constructor(private employerService: EmployerService) {}
   

@@ -2,12 +2,9 @@
     <div class="container-sm">
         <div>
             <div class="workbench col-auto" *ngIf="!hideElement">
-                <div>
-                    <input id="inputArea" class="form-control shadow bg-body-tertiary rounded" [(ngModel)]="searchTerm" (input)="search()"
-                    width="200" height="30" placeholder="Pesquisar por funcionarios...">
-                </div>
+                <Searchbar-element [(ngModel)]="searchTerm" (input)="search()"></Searchbar-element>
                 <br>
-                <app-add-button id="addButton" (click)="showClientRegistration = true" (click)="hideElement = !hideElement" text="Adicionar Funcionario"></app-add-button>
+                <Button-element (click)="showClientRegistration = true" (click)="hideElement = !hideElement" text="Adicionar Funcionario"></Button-element>
             </div>
             <br>
             <div class="container-fluid" *ngIf="showClientRegistration">
@@ -54,7 +51,7 @@
                             </div>
 
                             <br>
-                            <app-save-button></app-save-button>
+                            <Button-element text="Salvar"></Button-element>
                         </form>
                     </div>
                 </div>

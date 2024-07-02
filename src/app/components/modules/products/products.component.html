@@ -1,12 +1,9 @@
 <div class="container-sm">
     <div>
         <div class="workbench" *ngIf="!hideElement">
-            <div>
-                <input id="inputArea" class="form-control shadow bg-body-tertiary rounded" [(ngModel)]="searchTerm" (input)="search()"
-                width="200" height="30" placeholder="Pesquisar por produtos...">
-            </div>
+            <Searchbar-element [(ngModel)]="searchTerm" (input)="search()"></Searchbar-element>
             <br>
-            <app-add-button id="addButton" (click)="showClientRegistration = true" (click)="hideElement = !hideElement" text="Adicionar Produto"></app-add-button>
+            <Button-element (click)="showClientRegistration = true" (click)="hideElement = !hideElement" text="Adicionar Produto"></Button-element>
         </div>
     </div>
     <br>
@@ -47,7 +44,7 @@
                     </div>
 
                     <br>
-                    <app-save-button></app-save-button>
+                    <Button-element text="Salvar"></Button-element>
                 </form>
             </div>
         </div>

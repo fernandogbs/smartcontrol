@@ -19,16 +19,13 @@
                             <img src="assets/eye.svg" alt="Ícone de senha oculta" *ngIf="!hidePassword" />
                         </span>
                     </div>
-                    
                     <div class="invalid-feedback d-block" *ngIf="loginError">
                         Usuário ou senha incorretos
                     </div>
                     <br>
-                    <Button type="submit" (click)="onLogin()" text="Login" class="shadow container"></Button>
-                    <Button type="submit" (click)="onLogin()" class="shadow container" text="Entrar"></Button>
                 </div>
+                <Button-element type="submit" (click)="onLogin()" text="Login"></Button-element>
             </form>   
-            
         </div>
     </div>
 </div>
