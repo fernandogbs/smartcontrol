@@ -11,7 +11,7 @@ import { Product } from '../models/product';
 })
 export class ProductService {
 
-  url = 'http://localhost:3000/products';
+  private url = 'http://localhost:3000/products';
 
   constructor(private httpClient: HttpClient) { }
 

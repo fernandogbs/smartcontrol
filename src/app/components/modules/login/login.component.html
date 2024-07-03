@@ -15,8 +15,8 @@
                         <input type="{{ hidePassword ? 'password' : 'text' }}" class="form-control" id="password" name="password" [(ngModel)]="password" required [class.is-invalid]="loginError">
                         <label for="password" class="form-label">Senha</label>
                         <span class="password-toggle" (click)="togglePassword()" >
-                            <img src="assets/eye-off.svg" alt="Ícone de senha"  *ngIf="hidePassword" />
-                            <img src="assets/eye.svg" alt="Ícone de senha oculta" *ngIf="!hidePassword" />
+                            <img src="../../assets/eye-off.svg" alt="Ícone de senha"  *ngIf="hidePassword" />
+                            <img src="../../assets/eye.svg" alt="Ícone de senha oculta" *ngIf="!hidePassword" />
                         </span>
                     </div>
                     <div class="invalid-feedback d-block" *ngIf="loginError">

@@ -1,137 +1,137 @@
 
-    <div class="container-sm">
-        <div>
-            <div class="workbench col-auto" *ngIf="!hideElement">
-                <Searchbar-element [(ngModel)]="searchTerm" (input)="search()"></Searchbar-element>
-                <br>
-                <Button-element (click)="showClientRegistration = true" (click)="hideElement = !hideElement" text="Adicionar Funcionario"></Button-element>
-            </div>
+<div class="container-sm">
+    <div>
+        <div class="workbench col-auto" *ngIf="!hideElement">
+            <Searchbar-element [(ngModel)]="searchTerm" (input)="search()"></Searchbar-element>
             <br>
-            <div class="container-fluid" *ngIf="showClientRegistration">
-                <div class="navbar">
+            <Button-element (click)="showClientRegistration = true" (click)="hideElement = !hideElement" text="Adicionar Funcionario"></Button-element>
+        </div>
+        <br>
+        <div class="container-fluid" *ngIf="showClientRegistration">
+            <div class="navbar">
 
-                    <div class="container-fluid">
-                        <h2 style="font-weight: 700;">Cadastro de Funcionário</h2>
-                        <button type="reset" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="cleanForm(f)" (click)="hideElement = !hideElement" (click)="showClientRegistration = false"></button>
-                    </div>
-                </div>
-                <div class="container-fluid card add-client">
-                    <div class="card-body">
-                        <form id="add-form" (ngSubmit)="f.form.valid && saveEmployer(f)" #f="ngForm" novalidate>
-                            <div class="form-group mb-4">
-                                <label for="name">Nome</label>
-                                <input type="text" [(ngModel)]="employer.name" id="name" name="name" #name="ngModel" required class="form-control shadow" [ngClass]="{ 'is-invalid': f.submitted && name.invalid}" placeholder="Digite o nome"> 
-                                <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
-                                    <div *ngIf="name.errors">Nome é obrigatório</div>
-                                </div>
-                            </div>
-
-                            <div class="form-group mb-4">
-                                <label for="email">E-mail</label>
-                                <input type="text" [(ngModel)] = "employer.mailAddress" id="email" name="email" #email="ngModel"  class="form-control shadow" [ngClass]="{'is-invalid': f.submitted && email.invalid}" placeholder="Digite um e-mail">
-                                <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
-                                    <div *ngIf="email.errors">E-mail é obrigatório</div>
-                                </div>
-                            </div>
-
-                            <div class="form-group mb-4">
-                                <label for="cpf">CPF</label>
-                                <input type="number" [(ngModel)]="employer.cpf" id="cpf" name="cpf" #cpf="ngModel" required class="form-control shadow" [ngClass]="{'is-invalid': f.submitted && cpf.invalid}" placeholder="CPF">
-                                <div *ngIf="f.submitted && cpf.invalid" class="invalid-feedback">
-                                    <div *ngIf="cpf.errors">CPF é obrigatório</div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="phoneNumber">Contato</label>
-                                <input type="number" [(ngModel)]="employer.phoneNumber" id="phoneNumber" name="phoneNumber" #phoneNumber="ngModel" required class="form-control shadow" [ngClass]="{'is-invalid': f.submitted && phoneNumber.invalid}" placeholder="Número de contato">
-                                <div *ngIf="f.submitted && phoneNumber.invalid" class="invalid-feedback">
-                                    <div *ngIf="phoneNumber.errors">Número de telefone é obrigatório</div>
-                                </div>
-                            </div>
-
-                            <br>
-                            <Button-element text="Salvar"></Button-element>
-                        </form>
-                    </div>
+                <div class="container-fluid">
+                    <h2 style="font-weight: 700;">Cadastro de Funcionário</h2>
+                    <button type="reset" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="cleanForm(f)" (click)="hideElement = !hideElement" (click)="showClientRegistration = false"></button>
                 </div>
             </div>
-            <div class="table-responsive overflow-auto" style="max-height: 500px;"  *ngIf="!hideTable">
-                <table class="table caption-top table-secondary" *ngIf="!hideElement">
-                    <caption style="font-weight: 700; font-size: 24px; color: #000;">Lista de funcionarios</caption>
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">CPF</th>
-                            <th scope="col">E-mail</th>
-                            <th scope="col">Contato</th>
-                            <th scope="col">Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody >
-                        <tr *ngFor="let employer of employers">
-                            <td>{{employer.id}}</td>
-                            <td>{{employer.name}}</td>
-                            <td>{{employer.cpf}}</td>
-                            <td>{{employer.mailAddress}}</td>
-                            <td>{{employer.phoneNumber}}</td>
-                            <td>
-                                <div class="btn-group" dropdown>
-                                    <button class="dropdown-basic" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="menu__itens">
-                                        . . .
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-bottom shadow" id="dropdown__menu">
-                                        <img src="../../../assets/edit.svg" alt="edit"> <button (click)="editEmployer(employer)" id="menu__button__one" (click)="showClientRegistration = true" (click)="hideElement = !hideElement"> Editar</button>
-                                        <img src="../../../assets/delete.svg" alt="delete"> <button (click)="deleteEmployer(employer)" id="menu__button__two"> Excluir</button>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="table-responsive overflow-auto" style="max-height: 500px;" *ngIf="hideTable">
-                <table class="table caption-top table-secondary" *ngIf="!showSearchTable">
-                    <caption style="font-weight: 700; font-size: 24px; color: #000;">Lista de funcionarios</caption>
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">CPF</th>
-                            <th scope="col">E-mail</th>
-                            <th scope="col">Contato</th>
-                            <th scope="col">Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody >
-                        <tr *ngFor="let result of searchResults">
-                            <td>{{result.id}}</td>
-                            <td>{{result.name}}</td>
-                            <td>{{result.cpf}}</td>
-                            <td>{{result.mailAddress}}</td>
-                            <td>{{result.phoneNumber}}</td>
-                            <td>
-                                <div class="btn-group" dropdown>
-                                    <button class="dropdown-basic" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="menu__itens">
-                                        . . .
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-bottom shadow" id="dropdown__menu">
-                                        <img src="../../../assets/edit.svg" alt="edit"> <button (click)="editEmployer(result) " id="menu__button__one" (click)="showClientRegistration = true" (click)="hideElement = !hideElement"> Editar</button>
-                                        <img src="../../../assets/delete.svg" alt="delete"> <button (click)="deleteEmployer(result)" id="menu__button__two">Excluir </button>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <p *ngIf="searchResults.length === 0;" class="align-self-center" style="background-color: #fff;">Nenhum item encontrado</p>
-                        </tr>
-                    </tbody>
-                </table>
-        
-            </div>
+            <div class="container-fluid card add-client">
+                <div class="card-body">
+                    <form id="add-form" (ngSubmit)="f.form.valid && saveEmployee(f)" #f="ngForm" novalidate>
+                        <div class="form-group mb-4">
+                            <label for="name">Nome</label>
+                            <input type="text" [(ngModel)]="employee.name" id="name" name="name" #name="ngModel" required class="form-control shadow" [ngClass]="{ 'is-invalid': f.submitted && name.invalid}" placeholder="Digite o nome"> 
+                            <div *ngIf="f.submitted && name.invalid" class="invalid-feedback">
+                                <div *ngIf="name.errors">Nome é obrigatório</div>
+                            </div>
+                        </div>
 
+                        <div class="form-group mb-4">
+                            <label for="email">E-mail</label>
+                            <input type="text" [(ngModel)] = "employee.mailAddress" id="email" name="email" #email="ngModel"  class="form-control shadow" [ngClass]="{'is-invalid': f.submitted && email.invalid}" placeholder="Digite um e-mail">
+                            <div *ngIf="f.submitted && email.invalid" class="invalid-feedback">
+                                <div *ngIf="email.errors">E-mail é obrigatório</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="cpf">CPF</label>
+                            <input type="number" [(ngModel)]="employee.cpf" id="cpf" name="cpf" #cpf="ngModel" required class="form-control shadow" [ngClass]="{'is-invalid': f.submitted && cpf.invalid}" placeholder="CPF">
+                            <div *ngIf="f.submitted && cpf.invalid" class="invalid-feedback">
+                                <div *ngIf="cpf.errors">CPF é obrigatório</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phoneNumber">Contato</label>
+                            <input type="number" [(ngModel)]="employee.phoneNumber" id="phoneNumber" name="phoneNumber" #phoneNumber="ngModel" required class="form-control shadow" [ngClass]="{'is-invalid': f.submitted && phoneNumber.invalid}" placeholder="Número de contato">
+                            <div *ngIf="f.submitted && phoneNumber.invalid" class="invalid-feedback">
+                                <div *ngIf="phoneNumber.errors">Número de telefone é obrigatório</div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <Button-element text="Salvar"></Button-element>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive overflow-auto" style="max-height: 500px;"  *ngIf="!hideTable">
+            <table class="table caption-top table-secondary" *ngIf="!hideElement">
+                <caption style="font-weight: 700; font-size: 24px; color: #000;">Lista de funcionarios</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">CPF</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Contato</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <tr *ngFor="let employee of employees">
+                        <td>{{employee.id}}</td>
+                        <td>{{employee.name}}</td>
+                        <td>{{employee.cpf}}</td>
+                        <td>{{employee.mailAddress}}</td>
+                        <td>{{employee.phoneNumber}}</td>
+                        <td>
+                            <div class="btn-group" dropdown>
+                                <button class="dropdown-basic" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="menu__itens">
+                                    . . .
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-bottom shadow" id="dropdown__menu">
+                                    <img src="../../../assets/edit.svg" alt="edit"> <button (click)="editEmployee(employee)" id="menu__button__one" (click)="showClientRegistration = true" (click)="hideElement = !hideElement"> Editar</button>
+                                    <img src="../../../assets/delete.svg" alt="delete"> <button (click)="deleteEmployee(employee)" id="menu__button__two"> Excluir</button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="table-responsive overflow-auto" style="max-height: 500px;" *ngIf="hideTable">
+            <table class="table caption-top table-secondary" *ngIf="!showSearchTable">
+                <caption style="font-weight: 700; font-size: 24px; color: #000;">Lista de funcionarios</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">CPF</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Contato</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <tr *ngFor="let result of searchResults">
+                        <td>{{result.id}}</td>
+                        <td>{{result.name}}</td>
+                        <td>{{result.cpf}}</td>
+                        <td>{{result.mailAddress}}</td>
+                        <td>{{result.phoneNumber}}</td>
+                        <td>
+                            <div class="btn-group" dropdown>
+                                <button class="dropdown-basic" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="menu__itens">
+                                    . . .
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-bottom shadow" id="dropdown__menu">
+                                    <img src="../../../assets/edit.svg" alt="edit"> <button (click)="editEmployee(result) " id="menu__button__one" (click)="showClientRegistration = true" (click)="hideElement = !hideElement"> Editar</button>
+                                    <img src="../../../assets/delete.svg" alt="delete"> <button (click)="deleteEmployee(result)" id="menu__button__two">Excluir </button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <p *ngIf="searchResults.length === 0;" class="align-self-center" style="background-color: #fff;">Nenhum item encontrado</p>
+                    </tr>
+                </tbody>
+            </table>
+    
         </div>
 
-
     </div>
+
+
+</div>

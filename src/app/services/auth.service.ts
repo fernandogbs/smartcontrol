@@ -13,7 +13,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class AuthService {
   isAuthenticated = false;
   
-  url = 'http://localhost:3000/users';
+  private url = 'http://localhost:3000/users';
 
 
   constructor(private httpClient: HttpClient, private router: Router) {}
