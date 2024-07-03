@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-import { Employer } from '../models/employer';
+import { Employee } from '../models/employee';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class EmployerService {
+export class EmployeeService {
 
-  url = 'http://localhost:3000/employers';
+  private url = 'http://localhost:3000/employees';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -20,36 +20,36 @@ export class EmployerService {
     })
   };
 
-  getEmployer(): Observable<Employer[]>{
-    return this.httpClient.get<Employer[]>(this.url)
+  getEmployee(): Observable<Employee[]>{
+    return this.httpClient.get<Employee[]>(this.url)
     .pipe(retry(2),
       catchError(this.handleError)
     );
   }
 
-  getEmployerById(id: number): Observable<Employer>{
-    return this.httpClient.get<Employer>(this.url + '/' + id)
+  getEmployeeById(id: number): Observable<Employee>{
+    return this.httpClient.get<Employee>(this.url + '/' + id)
     .pipe(retry(2), 
       catchError(this.handleError)
       );
   }
 
-  saveEmployer(employer: Employer): Observable<Employer>{
-    return this.httpClient.post<Employer>(this.url, JSON.stringify(employer), this.httpOptions)
+  saveEmployee(Employee: Employee): Observable<Employee>{
+    return this.httpClient.post<Employee>(this.url, JSON.stringify(Employee), this.httpOptions)
     .pipe(retry(2), 
       catchError(this.handleError)
       );
   }
 
-  updateEmployer(employer: Employer): Observable<Employer>{
-    return this.httpClient.put<Employer>(this.url + '/' + employer.id, JSON.stringify(employer), this.httpOptions)
+  updateEmployee(Employee: Employee): Observable<Employee>{
+    return this.httpClient.put<Employee>(this.url + '/' + Employee.id, JSON.stringify(Employee), this.httpOptions)
     .pipe(retry(2), 
       catchError(this.handleError)
       );
   }
 
-  deleteEmployer(employer: Employer): Observable<Employer>{
-    return this.httpClient.delete<Employer>(this.url + '/' + employer.id, this.httpOptions)
+  deleteEmployee(Employee: Employee): Observable<Employee>{
+    return this.httpClient.delete<Employee>(this.url + '/' + Employee.id, this.httpOptions)
     .pipe(
       retry(1), 
       catchError(this.handleError)

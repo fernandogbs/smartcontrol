@@ -8,7 +8,8 @@ import { Request } from '../models/request';
   providedIn: 'root'
 })
 export class RequestService {
-  url = 'http://localhost:3000/requests';
+  
+  private url = 'http://localhost:3000/requests';
 
   constructor(private httpClient: HttpClient) { }
 

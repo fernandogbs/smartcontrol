@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Employer } from 'src/app/models/employer';
-import { EmployerService } from 'src/app/services/employer.service';
+import { Employee } from 'src/app/models/employee';
+import { EmployeeService } from 'src/app/services/employee.service';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -15,29 +15,34 @@ export class EmployeesComponent implements OnInit{
   showClientRegistration: boolean = false;
   
   //variaveis API
-  employer = {} as Employer;
-  employers: Employer[] = [];
+
+  employee = {} as Employee;
+  employees: Employee[] = [];
+
 
 
   //variaveis de pesquisa
   @Input() width: string = '200px';
   @Input() height: string = '30px';
   searchTerm: string = '';
-  result = {} as Employer;
-  searchResults: Employer[] = [];
+
+  result = {} as Employee;
+  searchResults: Employee[] = [];
   searchActive: boolean = false;
   showSearchTable: boolean = true;
   hideTable: boolean = false
 
-  constructor(private employerService: EmployerService) {}
+
+  constructor(private employeeService: EmployeeService) {}
   
   ngOnInit() {
-    this.getEmployer();
+    this.getEmployee();
   }
 
 
   search(): any {
-    this.searchResults = this.employers.filter(item => {
+
+    this.searchResults = this.employees.filter(item => {
       const searchTerm = this.searchTerm.toLowerCase();
       return (
         item.name.toLowerCase().includes(searchTerm) ||// Verificar o nome
@@ -61,41 +66,48 @@ export class EmployeesComponent implements OnInit{
 
 
   //formulario para criação de novo cliente
-  saveEmployer(form: NgForm){
-    if(this.employer.id !== undefined) {
-      this.employerService.updateEmployer(this.employer).subscribe(() => {
+
+  saveEmployee(form: NgForm){
+    if(this.employee.id !== undefined) {
+      this.employeeService.updateEmployee(this.employee).subscribe(() => {
         this.cleanForm(form);
       });
     } else {
-      this.employerService.saveEmployer(this.employer).subscribe(() => {
+      this.employeeService.saveEmployee(this.employee).subscribe(() => {
         this.cleanForm(form);
       });
     }
   }
 
   //Obter todos os clientes do Banco de dados
-  getEmployer(){
-    this.employerService.getEmployer().subscribe((employers: Employer[]) => {
-      this.employers = employers;
+
+  getEmployee(){
+    this.employeeService.getEmployee().subscribe((employees: Employee[]) => {
+      this.employees = employees;
+
     });
   }
 
   //deleta cliente
-  deleteEmployer(employer: Employer){
-    this.employerService.deleteEmployer(employer).subscribe(() => {
-      this.getEmployer();
+
+  deleteEmployee(employer: Employee){
+    this.employeeService.deleteEmployee(employer).subscribe(() => {
+      this.getEmployee();
     });
   }
 
   //editar cliente da tabela
-  editEmployer(employer: Employer){
-    this.employer = {...employer}
+
+  editEmployee(employee: Employee){
+    this.employee = {...employee}
+
   }
 
   //limpar formulario
   cleanForm(form: NgForm){
-    this.getEmployer();
+    this.getEmployee();
     form.resetForm();
-    this.employer = {} as Employer;
+    this.employee = {} as Employee;
+
   }  
 }
