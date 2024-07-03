@@ -15,19 +15,23 @@ export class EmployeesComponent implements OnInit{
   showClientRegistration: boolean = false;
   
   //variaveis API
+
   employee = {} as Employee;
   employees: Employee[] = [];
+
 
 
   //variaveis de pesquisa
   @Input() width: string = '200px';
   @Input() height: string = '30px';
   searchTerm: string = '';
+
   result = {} as Employee;
   searchResults: Employee[] = [];
   searchActive: boolean = false;
   showSearchTable: boolean = true;
   hideTable: boolean = false
+
 
   constructor(private employeeService: EmployeeService) {}
   
@@ -37,6 +41,7 @@ export class EmployeesComponent implements OnInit{
 
 
   search(): any {
+
     this.searchResults = this.employees.filter(item => {
       const searchTerm = this.searchTerm.toLowerCase();
       return (
@@ -61,6 +66,7 @@ export class EmployeesComponent implements OnInit{
 
 
   //formulario para criação de novo cliente
+
   saveEmployee(form: NgForm){
     if(this.employee.id !== undefined) {
       this.employeeService.updateEmployee(this.employee).subscribe(() => {
@@ -74,13 +80,16 @@ export class EmployeesComponent implements OnInit{
   }
 
   //Obter todos os clientes do Banco de dados
+
   getEmployee(){
     this.employeeService.getEmployee().subscribe((employees: Employee[]) => {
       this.employees = employees;
+
     });
   }
 
   //deleta cliente
+
   deleteEmployee(employer: Employee){
     this.employeeService.deleteEmployee(employer).subscribe(() => {
       this.getEmployee();
@@ -88,8 +97,10 @@ export class EmployeesComponent implements OnInit{
   }
 
   //editar cliente da tabela
+
   editEmployee(employee: Employee){
     this.employee = {...employee}
+
   }
 
   //limpar formulario
@@ -97,5 +108,6 @@ export class EmployeesComponent implements OnInit{
     this.getEmployee();
     form.resetForm();
     this.employee = {} as Employee;
+
   }  
 }
